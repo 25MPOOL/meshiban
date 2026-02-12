@@ -1,0 +1,48 @@
+{
+  "name": "meshitouban",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+
+  "postCreateCommand": "uv sync",
+
+  // 環境変数
+  "runArgs": ["--env-file", ".env"],
+
+  // 機能
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/uv:1": {}
+  },
+  
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // python settings
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.languageServer": "Pylance",
+        // pytest
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestArgs": ["tests"],
+        // ruff
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
+        }
+      },
+      "extensions": [
+        // Python
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        // ruff
+        "charliermarsh.ruff",
+        // git
+        "mhutchie.git-graph",
+      ]
+    }
+  }
+}
