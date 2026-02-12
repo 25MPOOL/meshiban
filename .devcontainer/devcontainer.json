@@ -2,28 +2,30 @@
   "name": "meshitouban",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
 
-  "postCreateCommand": "uv sync",
-
   // 環境変数
+  "containerEnv": {
+    "UV_PROJECT_ENVIRONMENT": ".venv"
+  },
   "runArgs": ["--env-file", ".env"],
 
   // 機能
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers-extra/features/uv:1": {}
   },
   
+  "postCreateCommand": "uv sync --all-extras",
+
   "customizations": {
     "vscode": {
       "settings": {
         // python settings
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": ".venv/bin/python",
         "python.languageServer": "Pylance",
         // pytest
         "python.testing.pytestEnabled": true,
         "python.testing.unittestEnabled": false,
-        "python.testing.pytestArgs": ["tests"],
+        "python.testing.pytestArgs": ["src/tests/*.py"],
         // ruff
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff",
@@ -41,7 +43,8 @@
         // ruff
         "charliermarsh.ruff",
         // git
-        "mhutchie.git-graph",
+        "mhutchie.git-lens",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   }
