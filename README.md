@@ -15,7 +15,7 @@
 
 ## 環境構築
 
-`mise` をローカルにインストール
+`mise` をローカルにインストール (Debian/Ubuntu 系の場合)
 
 ```bash
 sudo apt update -y && sudo apt install -y curl
@@ -26,13 +26,13 @@ sudo apt update -y
 sudo apt install -y mise
 ```
 
-`PJ` の `.mise.toml` から依存関係をインストール
+プロジェクトの `.mise.toml` から依存関係をインストール
 
 ```bash
 mise install
 ```
 
-`PJ` を `mise` で構築
+プロジェクトを `mise` で構築
 
 ```bash
 mise run setup
