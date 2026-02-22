@@ -12,20 +12,20 @@ run = "python src/main.py"
 
 [tasks.fmt]
 description = "コードフォーマット"
-run = "ruff format ."
+run = "uv run ruff format ."
 
 [tasks.fmt-check]
 description = "フォーマットチェック（CI用）"
-run = "ruff format . --check"
+run = "uv run ruff format . --check"
 
 [tasks.lint]
 description = "Lintチェック"
-run = "ruff check . --fix"
+run = "uv run ruff check . --fix"
 
 [tasks.lint-check]
 description = "Lintチェック（CI用・自動修正なし）"
-run = "ruff check ."
+run = "uv run ruff check ."
 
 [tasks.test]
 description = "テストの実行"
-run = "pytest"
+run = "uv run pytest"
