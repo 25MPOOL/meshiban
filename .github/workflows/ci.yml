@@ -3,11 +3,11 @@ name: python.ci
 on:
   pull_request:
     paths-ignore:
-      - "**.md"
+      - "**/*.md"
       - ".gitignore"
   push:
     paths-ignore:
-      - "**.md"
+      - "**/*.md"
       - ".gitignore"
 
 concurrency:
