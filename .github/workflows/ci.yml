@@ -1,0 +1,30 @@
+name: python.ci
+
+on:
+  push:
+    paths:
+      - "**/*.py"
+      - ".github/workflows/ci.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
+      - name: Install mise
+        uses: jdx/mise-action@6d1e696aa24c1aa1bcc1adea0212707c71ab78a8 # 3.6.1
+      - name: Run setup
+        run: mise run setup
+
+      - name: Run fmt-check
+        run: mise run fmt-check
+      - name: Run lint-check
+        run: mise run lint-check
+      - name: Run test
+        run: mise run test
