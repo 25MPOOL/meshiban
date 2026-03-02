@@ -1,6 +1,6 @@
 [tools]
 python = "3.12"
-uv = "0.10.4"
+uv = "0.10.6"
 
 [tasks.setup]
 description = "プロジェクトの初期セットアップ"
